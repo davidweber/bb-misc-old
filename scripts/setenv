@@ -1,0 +1,15 @@
+# Set OEBASE to where Arago overlay and OpenEmbedded repositories reside
+# NOTE: Do NOT place a trailing / on the end of OEBASE.  Doing so will
+#       cause the amend class to not find its files.
+export OEBASE=$HOME/beagleboard/oe
+
+# Set SCRATCH variable accordingly if you want to use scratch area
+# export SCRATCH=/sim/scratch_AID
+
+# Set the paths...
+export BBPATH=$OEBASE/arago:$OEBASE/arago-oe-dev
+export PATH=$HOME/beagleboard/ti-sdk-beagleboard-05.02.00.00/linux-devkit/bin:$OEBASE/arago-bitbake/bin/:$OEBASE/arago-utils/:$PATH
+
+# Preserve important/all environment variables
+export BB_ENV_EXTRAWHITE="OEBASE MACHINE META_SDK_PATH TOOLCHAIN_TYPE TOOLCHAIN_BRAND http_proxy https_proxy ftp_proxy no_proxy GIT_PROXY_COMMAND"
+# export BB_PRESERVE_ENV=1
