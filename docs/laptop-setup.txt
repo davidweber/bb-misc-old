@@ -1,0 +1,8 @@
+This file documents the laptop configuration used for the Beagleboard-xM Speedway.
+
+Installed Software
+ - VMware Player 3.1.4
+ - Tera Term 4.7 (from sourceforge.net)
+
+Desktop Configuration
+ - Unpinned "Simple Tap", "Windows Media Player", and "Internet Explorer" shortcuts from the taskbar.
