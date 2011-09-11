@@ -1,0 +1,5 @@
+# this file should be sourced from .bashrc to simplify your life
+export TOOLCHAIN=${HOME}/beagleboard/sdk/linux-devkit/bin
+export PATH=$TOOLCHAIN:$PATH
+export CROSS_COMPILE=arm-arago-linux-gnueabi-
+alias makearm='make ARCH=arm'
