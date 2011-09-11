@@ -29,11 +29,15 @@ echo "
 
 MY_DIR=$PWD
 
+SDK_DIR_URL=http://software-dl.ti.com/dsps/dsps_public_sw/am_bu/sdk/BeagleBoardSDK/latest/exports
+
 SDK_INSTALLER=ti-sdk-beagleboard-05.02.00.00-Linux-x86-Install
 
 INSTALL_DIR=${HOME}/beagleboard
 
 SDK_VER=ti-sdk-beagleboard-05.02.00.00
+
+SDK_DIR=${INSTALL_DIR}/${SDK_VER}
 
 SDK_SOFTLINK_DIR=${INSTALL_DIR}/sdk
 
@@ -43,21 +47,21 @@ fi
 cd ${INSTALL_DIR}
 
 if [ ! -f "${INSTALL_DIR}/${SDK_INSTALLER}" ]; then
-  wget -nc http://software-dl.ti.com/dsps/dsps_public_sw/am_bu/sdk/BeagleBoardSDK/latest/exports/${SDK_INSTALLER}
+  wget -nc ${SDK_DIR_URL}/${SDK_INSTALLER}
 fi
 
-if [ ! -d "${INSTALL_DIR}/${SDK_VER}" ]; then
+if [ ! -d "${SDK_DIR}" ]; then
   chmod 755 ${SDK_INSTALLER}
-  ./${SDK_INSTALLER} --prefix ${INSTALL_DIR}/${SDK_VER}
+  ./${SDK_INSTALLER} --prefix ${SDK_DIR}
 fi
 
 if [ -h ${SDK_SOFTLINK_DIR} ]; then
   rm -f ${SDK_SOFTLINK_DIR}
 fi
 
-ln -s ${INSTALL_DIR}/${SDK_VER} sdk
+ln -s ${SDK_DIR} sdk
 
-cd ${SDK_VER}
+cd ${SDK_DIR}
 
 ./setup.sh
 
@@ -149,4 +153,3 @@ bitbake arago-base-image
 echo "
 Done
 "
-
