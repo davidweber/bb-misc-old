@@ -22,7 +22,7 @@ vram=12M
 ipaddr=192.168.0.10
 serverip=192.168.0.20
 loadkernel=tftp ${loadaddr} ${bootfile}
-nfspath=/home/training/beagleboard/sdk/targetNFS
+nfspath=/home/training/beagleboard/ti-sdk-beagleboard-05.02.00.00/targetNFS
 nfsargs=setenv bootargs console=${console} ${optargs} mpurate=${mpurate} buddy=${buddy} camera=${camera} vram=${vram} omapfb.mode=${lcdmode} ${omapfbopts} omapdss.def_disp=${defaultdisplay} noinitrd ip=${ipaddr} rw root=/dev/nfs nfsroot=${serverip}:${nfspath}
 bootfile=uImage.beagleboard
 uenvcmd=run i2cinitcmd; usb start; run loadkernel; run nfsargs; bootm ${loadaddr}
