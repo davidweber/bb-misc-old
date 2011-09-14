@@ -1,5 +1,5 @@
 diff --git a/arch/arm/mach-omap2/board-omap3beagle.c b/arch/arm/mach-omap2/board-omap3beagle.c
-index dd6e31f..d2a50fe 100644
+index dd6e31f..e5dcaee 100644
 --- a/arch/arm/mach-omap2/board-omap3beagle.c
 +++ b/arch/arm/mach-omap2/board-omap3beagle.c
 @@ -88,6 +88,26 @@ static u8 omap3_beagle_get_rev(void)
@@ -123,7 +123,7 @@ index dd6e31f..d2a50fe 100644
  }
  
  #include "sdram-micron-mt46h32m32lf-6.h"
-@@ -723,17 +797,18 @@ static struct i2c_board_info __initdata beagle_i2c_eeprom[] = {
+@@ -723,17 +797,19 @@ static struct i2c_board_info __initdata beagle_i2c_eeprom[] = {
         },
  };
  
@@ -136,7 +136,8 @@ index dd6e31f..d2a50fe 100644
 +		I2C_BOARD_INFO("tlc59108", 0x40),
 +	},
 +#if defined(CONFIG_RTC_DRV_DS1307) || \
-+	defined(CONFIG_RTC_DRV_DS1307_MODULE)
++	defined(CONFIG_RTC_DRV_DS1307_MODULE) 
++	{
  		I2C_BOARD_INFO("ds1307", 0x68),
  	},
 -};
@@ -147,7 +148,7 @@ index dd6e31f..d2a50fe 100644
  
  static int __init omap3_beagle_i2c_init(void)
  {
-@@ -950,6 +1025,10 @@ static void __init omap3_beagle_init(void)
+@@ -950,6 +1026,10 @@ static void __init omap3_beagle_init(void)
  		gpio_buttons[0].gpio = 4;
  	}
  
