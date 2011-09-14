@@ -1,0 +1,13 @@
+paddr=192.168.0.10
+serverip=192.168.0.20
+consoleargs=ttyO2,115200n8
+nfspath=/home/training/beagleboard/sdk/targetNFS
+nfsargs=setenv bootargs console=${consoleargs} ${omapdispargs} root=/dev/nfs ip=${ipaddr} nfsroot=${serverip}:${nfspath},nolock rw noinitrd;
+bootfile=uImage
+loadkernel=usb start; tftp ${bootfile}
+tftp_nfs_boot=run loadkernel; run nfsargs;bootm;
+uenvcmd=run i2cinitcmd; run tftp_nfs_boot;
+lcdmode=lcd
+defaultdisplay=lcd
+omapdispargs=omapfb.mode=lcd omapdss.def_disp=lcd
+i2cinitcmd=i2c dev 1; i2c mw 0x40 0x00 0x00;
