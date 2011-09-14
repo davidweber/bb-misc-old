@@ -1,7 +1,7 @@
 ipaddr=192.168.0.10
 serverip=192.168.0.20
 consoleargs=ttyO2,115200n8
-nfspath=/home/training/beagleboard/ti-sdk-beagleboard-05.02.00.00/targetNFS
+nfspath=/home/training/beagleboard/sdk/targetNFS
 nfsargs=setenv bootargs console=${consoleargs} root=/dev/nfs ip=${ipaddr} nfsroot=${serverip}:${nfspath},nolock rw noinitrd;
 bootfile=uImage
 loadkernel=usb start; tftp ${bootfile}
