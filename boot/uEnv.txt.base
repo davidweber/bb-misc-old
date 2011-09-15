@@ -7,3 +7,4 @@ bootfile=uImage
 loadkernel=usb start; tftp ${bootfile}
 tftp_nfs_boot=run loadkernel; run nfsargs;bootm;
 uenvcmd=run tftp_nfs_boot;
+i2cinitcmd=i2c dev 1; i2c mw 0x40 0x00 0x00;
